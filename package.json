@@ -3,13 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "dev": "vue-cli-service serve",
+    "build:uat": "vue-cli-service build --mode uat",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^1.2.0",
     "core-js": "^3.8.3",
+    "element-ui": "^2.15.12",
+    "fuse.js": "^6.6.2",
+    "js-cookie": "^3.0.1",
+    "normalize.css": "^8.0.1",
+    "nprogress": "^0.2.0",
+    "path-browserify": "^1.0.1",
+    "path-to-regexp": "^6.2.1",
+    "pinyin": "^3.0.0-alpha.5",
+    "screenfull": "^6.0.2",
     "vue": "^2.6.14",
+    "vue-i18n": "~8.28.1",
     "vue-router": "^3.5.1",
     "vuex": "^3.6.2"
   },
@@ -25,9 +37,14 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.0.3",
+    "html-webpack-plugin": "^5.5.0",
+    "mockjs": "^1.1.0",
     "prettier": "^2.4.1",
     "sass": "^1.32.7",
     "sass-loader": "^12.0.0",
+    "script-ext-html-webpack-plugin": "^2.1.5",
+    "svg-sprite-loader": "^6.0.11",
     "vue-template-compiler": "^2.6.14"
-  }
+  },
+  "license": "MIT"
 }
