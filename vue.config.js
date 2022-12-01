@@ -44,7 +44,7 @@ module.exports = defineConfig({
     name: name,
     resolve: {
       alias: {
-        'path': require.resolve("path-browserify"),
+        "path": require.resolve("path-browserify"),
         "@": resolve("src"),
         "@api": resolve("src/api"),
         "@assets": resolve("src/assets"),
