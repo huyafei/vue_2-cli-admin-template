@@ -178,9 +178,12 @@ export default {
       }
       return res;
     },
-    querySearch(query) {
+    async querySearch(query) {
       if (query !== "") {
-        this.options = this.fuse.search(query);
+        this.options = await this.fuse.search(query).reduce((pre, cur) => {
+          pre.push({ ...cur, ...cur.item });
+          return pre;
+        }, []);
       } else {
         this.options = [];
       }

@@ -44,7 +44,7 @@ module.exports = defineConfig({
     name: name,
     resolve: {
       alias: {
-        "path": require.resolve("path-browserify"),
+        // "path": require.resolve("path-browserify"),
         "@": resolve("src"),
         "@api": resolve("src/api"),
         "@assets": resolve("src/assets"),
@@ -54,9 +54,9 @@ module.exports = defineConfig({
         "@utils": resolve("src/utils"),
         "@views": resolve("src/views"),
       },
-      // fallback: {
-      //   path: require.resolve("path-browserify"),
-      // },
+      fallback: {
+        path: require.resolve("path-browserify"),
+      },
     },
   },
   chainWebpack(config) {
