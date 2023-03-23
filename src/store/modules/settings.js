@@ -1,4 +1,4 @@
-import variables from "@/assets/styles/element-variables.module.scss";
+import variables from "@/assets/styles/variables.module.scss";
 import defaultSettings from "@/settings";
 
 const {

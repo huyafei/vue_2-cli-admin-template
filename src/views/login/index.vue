@@ -30,36 +30,27 @@
         />
       </el-form-item>
 
-      <el-tooltip
-        v-model="capsTooltip"
-        content="Caps lock is On"
-        placement="right"
-        manual
-      >
-        <el-form-item prop="password">
-          <span class="svg-container">
-            <svg-icon icon-class="password" />
-          </span>
-          <el-input
-            :key="passwordType"
-            ref="password"
-            v-model="loginForm.password"
-            :type="passwordType"
-            :placeholder="$t('login.password')"
-            name="password"
-            tabindex="2"
-            autocomplete="on"
-            @keyup.native="checkCapslock"
-            @blur="capsTooltip = false"
-            @keyup.enter.native="handleLogin"
+      <el-form-item prop="password">
+        <span class="svg-container">
+          <svg-icon icon-class="password" />
+        </span>
+        <el-input
+          :key="passwordType"
+          ref="password"
+          v-model="loginForm.password"
+          :type="passwordType"
+          :placeholder="$t('login.password')"
+          name="password"
+          tabindex="2"
+          autocomplete="on"
+          @keyup.enter.native="handleLogin"
+        />
+        <span class="show-pwd" @click="showPwd">
+          <svg-icon
+            :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'"
           />
-          <span class="show-pwd" @click="showPwd">
-            <svg-icon
-              :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'"
-            />
-          </span>
-        </el-form-item>
-      </el-tooltip>
+        </span>
+      </el-form-item>
 
       <el-button
         :loading="loading"
@@ -128,35 +119,34 @@ export default {
     return {
       loginForm: {
         username: "admin",
-        password: "111111",
+        password: "111111"
       },
       loginRules: {
         username: [
-          { required: true, trigger: "blur", validator: validateUsername },
+          { required: true, trigger: "blur", validator: validateUsername }
         ],
         password: [
-          { required: true, trigger: "blur", validator: validatePassword },
-        ],
+          { required: true, trigger: "blur", validator: validatePassword }
+        ]
       },
       passwordType: "password",
-      capsTooltip: false,
       loading: false,
       showDialog: false,
       redirect: undefined,
-      otherQuery: {},
+      otherQuery: {}
     };
   },
   watch: {
     $route: {
-      handler: function (route) {
+      handler: function(route) {
         const query = route.query;
         if (query) {
           this.redirect = query.redirect;
           this.otherQuery = this.getOtherQuery(query);
         }
       },
-      immediate: true,
-    },
+      immediate: true
+    }
   },
   created() {
     // window.addEventListener('storage', this.afterQRScan)
@@ -172,10 +162,6 @@ export default {
     // window.removeEventListener('storage', this.afterQRScan)
   },
   methods: {
-    checkCapslock(e) {
-      const { key } = e;
-      this.capsTooltip = key && key.length === 1 && key >= "A" && key <= "Z";
-    },
     showPwd() {
       if (this.passwordType === "password") {
         this.passwordType = "";
@@ -195,7 +181,7 @@ export default {
             .then(() => {
               this.$router.push({
                 path: this.redirect || "/",
-                query: this.otherQuery,
+                query: this.otherQuery
               });
               this.loading = false;
             })
@@ -215,7 +201,7 @@ export default {
         }
         return acc;
       }, {});
-    },
+    }
     // afterQRScan() {
     //   if (e.key === 'x-admin-oauth-code') {
     //     const code = getQueryObject(e.newValue)
@@ -234,7 +220,7 @@ export default {
     //     }
     //   }
     // }
-  },
+  }
 };
 </script>
 

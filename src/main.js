@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 import "normalize.css/normalize.css"; // a modern alternative to CSS resets
 
 import Element from "element-ui";
-import "./assets/styles/element-variables.scss";
+import "@/assets/styles/element-variables.scss";
 
 import "@/assets/styles/index.scss"; // global css
 
@@ -23,7 +23,6 @@ import "./permission"; // permission control
  * 请在上线前删除!!!
  */
 const { mockXHR } = require("../mock");
-console.log(process.env);
 if (["development"].includes(process.env.VUE_APP_PROJECT_ENV)) {
   mockXHR();
 }
